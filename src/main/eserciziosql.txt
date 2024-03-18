@@ -31,3 +31,8 @@ FROM Fatture
 WHERE Tipologia = 'A'
 GROUP BY EXTRACT(YEAR FROM data_fattura)
 HAVING COUNT(*) > 2;
+
+8)SELECT C.regione_residenza, SUM(F.importo) AS TotaleImporti
+  FROM fatture F
+  JOIN clienti C ON F.numero_cliente = C.numero_cliente
+  GROUP BY C.regione_residenza;
